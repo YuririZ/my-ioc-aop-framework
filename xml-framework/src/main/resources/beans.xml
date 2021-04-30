@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans>
+    <bean id="userService" class="indi.yuri.xf.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="userDao" class="indi.yuri.xf.dao.UserDao">
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <bean id="transactionManager" class="indi.yuri.xf.util.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <bean id="proxyFactory" class="indi.yuri.xf.factory.ProxyFactory">
+        <property name="transactionManager" ref="transactionManager"></property>
+    </bean>
+
+    <bean id="connectionUtils" class="indi.yuri.xf.util.ConnectionUtils"></bean>
+</beans>
